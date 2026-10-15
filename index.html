@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quer namorar comigo? ❤️</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffe6e6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #ff4d6d;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .botoes {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 280px;
+            height: 70px;
+            margin: 0 auto;
+        }
+
+        button {
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.1s ease;
+            font-weight: bold;
+        }
+
+        #btnSim {
+            background-color: #4cc9f0;
+            color: white;
+        }
+
+        #btnSim:hover {
+            transform: scale(1.1);
+            background-color: #4361ee;
+        }
+
+        #btnNao {
+            background-color: #ff4d6d;
+            color: white;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+
+        #btnRecusar {
+            background-color: #ff6b6b;
+            color: white;
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="titulo">Quer sair comigo? 🌹</h1>
+        <div class="botoes">
+            <button id="btnSim" onclick="aceitou()">SIM!</button>
+            <button id="btnNao" type="button">NÃO</button>
+        </div>
+        <button id="btnRecusar" onclick="recusou()">não quero mais</button>
+    </div>
+
+    <script>
+        const btnNao = document.getElementById('btnNao');
+        const titulo = document.getElementById('titulo');
+        const btnSim = document.getElementById('btnSim');
+        const btnRecusar = document.getElementById('btnRecusar');
+
+        function fuga() {
+            const maxX = window.innerWidth - btnNao.offsetWidth - 20;
+            const maxY = window.innerHeight - btnNao.offsetHeight - 20;
+            const x = Math.random() * Math.max(0, maxX);
+            const y = Math.random() * Math.max(0, maxY);
+
+            btnNao.style.left = x + 'px';
+            btnNao.style.top = y + 'px';
+            btnNao.style.transform = 'none';
+        }
+
+        btnNao.addEventListener('mouseenter', fuga);
+        btnNao.addEventListener('mousemove', fuga);
+        btnNao.addEventListener('click', fuga);
+
+        function aceitou() {
+            titulo.innerHTML = "Sabia que diria sim! Te amo! ❤️💍";
+            btnNao.style.display = 'none';
+            btnSim.style.display = 'none';
+            btnRecusar.style.display = 'inline-block';
+            btnRecusar.textContent = 'não quero mais';
+        }
+
+        function recusou() {
+            titulo.innerHTML = 'deixa de ser gay 😠';
+            btnRecusar.style.display = 'none';
+            btnNao.style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
